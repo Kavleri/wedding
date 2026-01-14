@@ -1,8 +1,0 @@
-CREATE TABLE kontak (
-    id SERIAL PRIMARY KEY,
-    nama VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    subjek VARCHAR(150),
-    pesan TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
