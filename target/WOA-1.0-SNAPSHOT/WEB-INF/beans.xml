@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="https:
+       xmlns:xsi="http:
+       xsi:schemaLocation="https:
+       bean-discovery-mode="all">
+</beans>
