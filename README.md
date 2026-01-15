@@ -2,7 +2,7 @@
 # WEDDING AMBA ORGANIZER
 
 **Mata Kuliah:** Pemrograman Berorientasi Objek (PBO) / Pemrograman Web  
-**Dosen Pengampu:** (Silakan Isi)
+**Dosen Pengampu:** Nasrul, S.Pd.I., S.Kom., M.Kom.
 
 ---
 
