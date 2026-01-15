@@ -129,18 +129,42 @@ public class LoginServlet extends HttpServlet {
 
 ## SOURCE CODE & INSTALASI
 
-### Cara Menjalankan Aplikasi:
-1.  Clone repository ini:
-    ```bash
-    git clone https://github.com/Kavleri/wedding.git
-    ```
-2.  Import database:
-    -   Buka pgAdmin atau DBeaver.
-    -   Buat database baru bernama `db_wedding`.
-    -   Jalankan file `database.sql` di Query Tool.
-3.  Buka project di NetBeans / IntelliJ IDEA.
-4.  Pastikan Library JDBC PostgreSQL sudah terpasang.
-5.  Run Project (Tomcat Server).
+### Cara Menjalankan Aplikasi di Apache NetBeans:
+
+#### 1. Persiapan Database
+1.  Buka pgAdmin 4 atau DBeaver.
+2.  Buat database baru dengan nama `db_wedding`.
+3.  Klik kanan pada database `db_wedding` -> **Query Tool**.
+4.  Buka file `database.sql` (ada di dalam folder project), copy semua isinya, paste ke Query Tool, dan jalankan (Execute/F5).
+
+#### 2. Membuka Project di NetBeans
+1.  Buka aplikasi **Apache NetBeans**.
+2.  Pilih menu **File** -> **Open Project**.
+3.  Cari dan pilih folder `wedding` (pastikan ada icon kopi/cup di folder tersebut).
+4.  Klik **Open Project**.
+
+#### 3. Konfigurasi Library (JDBC Driver)
+Agar aplikasi bisa terkoneksi ke PostgreSQL, Anda wajib menambahkan driver JDBC:
+1.  Klik kanan pada nama project `wedding` di panel kiri (Projects).
+2.  Pilih **Properties**.
+3.  Pilih kategori **Libraries**.
+4.  Klik tombol **+ (Plus)** atau **Add JAR/Folder** di bagian Classpath.
+5.  Cari dan pilih file `postgresql-42.x.x.jar` (Anda harus mendownloadnya jika belum punya).
+6.  Klik **OK**.
+
+#### 4. Konfigurasi Koneksi (Jika Perlu)
+Jika password PostgreSQL Anda bukan `admin`, sesuaikan di file:
+`src/main/java/connection/DBConnection.java`
+```java
+private static final String PASSWORD = "password_anda";
+```
+
+#### 5. Menjalankan Aplikasi
+1.  Klik kanan pada project `wedding`.
+2.  Pilih **Clean and Build** (untuk memastikan tidak ada error).
+3.  Klik tombol **Run** (Segitiga Hijau) atau tekan **F6**.
+4.  Pilih server **Apache Tomcat** jika diminta.
+5.  Aplikasi akan terbuka otomatis di browser.
 
 ### Akses Login Admin:
 -   **Email:** admin@test.com
