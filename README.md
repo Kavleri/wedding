@@ -143,5 +143,5 @@ public class LoginServlet extends HttpServlet {
 5.  Run Project (Tomcat Server).
 
 ### Akses Login Admin:
--   **Email:** admin@amba.com
+-   **Email:** admin@test.com
 -   **Password:** admin123
