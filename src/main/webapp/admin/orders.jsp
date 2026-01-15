@@ -2,7 +2,6 @@
 <%@page import="dao.BookingDAO"%>
 <%@page import="model.BookingModel"%>
 <%@page import="model.AdminModel"%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%
     if(session.getAttribute("adminLog") == null){
         response.sendRedirect("../login.jsp"); 
@@ -10,17 +9,14 @@
     }
     AdminModel admin = (AdminModel) session.getAttribute("adminLog");
 %>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard Admin | Amba Organizer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https:
+    <link rel="stylesheet" href="https:
     <style>
         body { background-color: #f8f9fa; }
         .sidebar {
@@ -41,7 +37,6 @@
     </style>
 </head>
 <body>
-
 <div class="d-flex">
     <div class="sidebar d-flex flex-column flex-shrink-0 p-3">
         <h4 class="text-center mb-4">
@@ -70,7 +65,6 @@
                     <i class="fas fa-box-open me-2"></i> Kelola Paket
                 </a>
             </li>
-            
             <% 
             String role = admin.getRole();
             if(role == null || "admin".equalsIgnoreCase(role)) { 
@@ -93,7 +87,6 @@
             </li>
         </ul>
     </div>
-
     <div class="content w-100">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Dashboard Overview</h2>
@@ -102,10 +95,9 @@
                     <div class="fw-bold"><%= admin.getNama() %></div>
                     <small class="text-muted"><%= (admin.getRole() != null) ? admin.getRole() : "Super Admin" %></small>
                 </div>
-                <div class="bg-secondary rounded-circle" style="width: 40px; height: 40px; background-image: url('https://ui-avatars.com/api/?name=<%= admin.getNama() %>'); background-size: cover;"></div>
+                <div class="bg-secondary rounded-circle" style="width: 40px; height: 40px; background-image: url('https:
             </div>
         </div>
-
         <div class="card card-stat p-4">
             <h5 class="mb-4">Data Pesanan Masuk (CRUD Read)</h5>
             <div class="table-responsive">
@@ -125,7 +117,6 @@
                         <%
                             BookingDAO dao = new BookingDAO();
                             List<BookingModel> listBooking = dao.getAllBookings();
-                            
                             int no = 1;
                             if (listBooking != null && !listBooking.isEmpty()) {
                                 for(BookingModel b : listBooking) {
@@ -153,13 +144,11 @@
                                         <i class="fas fa-check"></i>
                                     </a>
                                     <% } %>
-                                    
                                     <% if(!"Cancelled".equals(st)) { %>
                                     <a href="../UpdateStatusServlet?id=<%= b.getId() %>&status=Cancelled" class="btn btn-sm btn-danger" title="Tolak" onclick="return confirm('Yakin mau tolak pesanan ini?')">
                                         <i class="fas fa-times"></i>
                                     </a>
                                     <% } %>
-                                    
                                     <% 
                                     if(role != null && "admin".equalsIgnoreCase(role)) { 
                                     %>
@@ -185,9 +174,7 @@
                 </table>
             </div>
         </div>
-        
     </div>
 </div>
-
 </body>
 </html>

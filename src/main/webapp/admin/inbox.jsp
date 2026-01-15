@@ -3,7 +3,6 @@
 <%@page import="dao.ContactDAO"%>
 <%@page import="model.AdminModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%
     if(session.getAttribute("adminLog") == null){
         response.sendRedirect("../login.jsp");
@@ -11,15 +10,14 @@
     }
     AdminModel admin = (AdminModel) session.getAttribute("adminLog");
 %>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <title>Inbox Pesan | Amba Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https:
+    <link rel="stylesheet" href="https:
     <style>
         body { background-color: #f8f9fa; }
         .sidebar {
@@ -41,7 +39,6 @@
     </style>
 </head>
 <body>
-
 <div class="d-flex">
     <div class="sidebar d-flex flex-column flex-shrink-0 p-3">
         <h4 class="text-center mb-4">
@@ -70,7 +67,6 @@
                     <i class="fas fa-box-open me-2"></i> Kelola Paket
                 </a>
             </li>
-            
             <% 
             String role = admin.getRole();
             if(role == null || "admin".equalsIgnoreCase(role)) { 
@@ -86,7 +82,6 @@
                 </a>
             </li>
             <% } %>
-            
             <li class="nav-item mt-5">
                 <a href="../LogoutServlet" class="nav-link bg-danger text-white rounded">
                     <i class="fas fa-sign-out-alt me-2"></i> Logout
@@ -94,20 +89,16 @@
             </li>
         </ul>
     </div>
-
     <div class="content">
         <h2 class="mb-4">Kotak Masuk Pesan</h2>
-        
         <% 
             String msg = request.getParameter("msg");
             if("deleted".equals(msg)) { %> <div class="alert alert-success">Pesan berhasil dihapus!</div> <% }
         %>
-
         <div class="row">
             <%
                 ContactDAO dao = new ContactDAO();
                 List<ContactModel> listPesan = dao.getAllMessages();
-                
                 if(listPesan != null && !listPesan.isEmpty()) {
                     for(ContactModel c : listPesan) {
             %>
@@ -123,7 +114,6 @@
                             (<a href="mailto:<%= c.getEmail() %>"><%= c.getEmail() %></a>)
                         </h6>
                         <p class="card-text bg-light p-3 rounded"><%= c.getPesan() %></p>
-                        
                         <div class="text-end">
                             <a href="mailto:<%= c.getEmail() %>?subject=Re: <%= c.getSubjek() %>" class="btn btn-sm btn-primary">
                                 <i class="fas fa-reply me-1"></i> Balas
@@ -149,7 +139,6 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https:
 </body>
 </html>

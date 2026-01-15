@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Cek Pesanan | Amba Organizer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https:
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         body {
@@ -65,23 +65,17 @@
     </style>
 </head>
 <body class="bg-light">
-
-    <!-- Navbar Include -->
     <jsp:include page="components/navbar.jsp" />
-
     <div class="container mt-5 pt-5">
         <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
             <div class="col-md-6 col-lg-5">
                 <div class="card card-check border-0">
                     <div class="card-body p-5 text-center">
-                        
                         <div class="icon-header mb-4">
                             <i class="bi bi-search-heart"></i>
                         </div>
-
                         <h2 class="fw-bold mb-2" style="color: #4a4a4a;">Lacak Pesanan</h2>
                         <p class="text-muted mb-4">Masukkan kode unik booking Anda untuk melihat status terkini.</p>
-                        
                         <% 
                             String error = request.getParameter("error");
                             if ("notfound".equals(error)) {
@@ -94,7 +88,6 @@
                                 <i class="bi bi-exclamation-triangle-fill me-2"></i> Harap masukkan kode
                             </div>
                         <% } %>
-
                         <form action="CheckBookingServlet" method="POST" class="mt-4">
                             <div class="mb-4">
                                 <input type="text" name="kode_booking" 
@@ -106,7 +99,6 @@
                                 <i class="bi bi-search me-2"></i> Cek Status Sekarang
                             </button>
                         </form>
-                        
                         <div class="mt-4 pt-3 border-top">
                             <a href="index.jsp" class="text-decoration-none fw-bold" style="color: #b76e79; transition: 0.3s;">
                                 <i class="bi bi-arrow-left me-1"></i> Kembali ke Beranda
@@ -114,18 +106,13 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Info Tambahan -->
                 <div class="text-center mt-4 text-muted small">
                     <p>Butuh bantuan? <a href="contact.jsp" style="color: #b76e79;">Hubungi Customer Service</a></p>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Tambahkan Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https:
+    <script src="https:
 </body>
 </html>

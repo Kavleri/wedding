@@ -19,7 +19,6 @@
                 <p class="small text-white-50 mb-1"><i class="fas fa-map-marker-alt me-2"></i> Jl. Cinta Sejati No. 1, Jakarta</p>
                 <p class="small text-white-50 mb-1"><i class="fas fa-phone me-2"></i> 0812-3456-7890</p>
                 <p class="small text-white-50"><i class="fas fa-envelope me-2"></i> info@amba.com</p>
-                
                 <div class="mt-3">
                     <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
                     <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>

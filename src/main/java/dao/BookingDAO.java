@@ -1,24 +1,17 @@
 package dao;
-
 import java.sql.*;
 import java.util.ArrayList; 
 import java.util.List;
 import java.util.Random;
 import connection.DBConnection;
 import model.BookingModel;
-
 public class BookingDAO {
-    
-    // 1. CREATE (Simpan dengan Generate Kode Unik)
     public String simpanBooking(BookingModel b) {
         String kodeUnik = null;
         try {
             Connection conn = DBConnection.getConnection();
-            
-            // Generate Kode Unik (Misal: WED-A1B2C)
             kodeUnik = generateKodeBooking();
             b.setKodeBooking(kodeUnik);
-
             String sql = "INSERT INTO booking (nama_pemesan, no_hp, tanggal_acara, alamat, paket_id, kode_booking) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, b.getNamaPemesan());
@@ -27,35 +20,27 @@ public class BookingDAO {
             ps.setString(4, b.getAlamat());
             ps.setInt(5, b.getPaketId());
             ps.setString(6, kodeUnik);
-            
             int affectedRows = ps.executeUpdate();
-            
-            // Jika gagal simpan, return null
             if (affectedRows == 0) {
                 kodeUnik = null;
             }
-            
             conn.close();
         } catch (Exception e) { 
             e.printStackTrace(); 
             kodeUnik = null;
         }
-        return kodeUnik; // Balikin kodenya biar bisa ditampilin
+        return kodeUnik; 
     }
-
-    // Helper: Generate Kode Random
     private String generateKodeBooking() {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
-        sb.append("WED-"); // Prefix biar keren
+        sb.append("WED-"); 
         for (int i = 0; i < 5; i++) {
             sb.append(chars.charAt(random.nextInt(chars.length())));
         }
         return sb.toString();
     }
-
-    // 2. READ (Ambil Semua Data)
     public List<BookingModel> getAllBookings() {
         List<BookingModel> list = new ArrayList<>();
         try {
@@ -70,8 +55,6 @@ public class BookingDAO {
         } catch (Exception e) { e.printStackTrace(); }
         return list;
     }
-
-    // 3. DELETE (Hapus)
     public boolean hapusBooking(int id) {
         boolean berhasil = false;
         try {
@@ -84,8 +67,6 @@ public class BookingDAO {
         } catch (Exception e) { e.printStackTrace(); }
         return berhasil;
     }
-
-    // 4. AMBIL SATU DATA (Buat Edit)
     public BookingModel getBookingById(int id) {
         BookingModel b = null;
         try {
@@ -94,7 +75,6 @@ public class BookingDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            
             if(rs.next()) {
                 b = mapResultSetToModel(rs);
             }
@@ -102,14 +82,11 @@ public class BookingDAO {
         } catch (Exception e) { e.printStackTrace(); }
         return b;
     }
-
-    // 5. UPDATE (Simpan Perubahan)
     public boolean updateBooking(BookingModel b) {
         boolean berhasil = false;
         try {
             Connection conn = DBConnection.getConnection();
             String sql = "UPDATE booking SET nama_pemesan=?, no_hp=?, tanggal_acara=?, alamat=?, paket_id=? WHERE id=?";
-            
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, b.getNamaPemesan());
             ps.setString(2, b.getNoHp());
@@ -117,14 +94,11 @@ public class BookingDAO {
             ps.setString(4, b.getAlamat());
             ps.setInt(5, b.getPaketId());
             ps.setInt(6, b.getId());
-            
             if (ps.executeUpdate() > 0) berhasil = true;
             conn.close();
         } catch (Exception e) { e.printStackTrace(); }
         return berhasil;
     }
-
-    // 6. CEK STATUS (Cari berdasarkan Kode Booking)
     public BookingModel getBookingByKode(String kode) {
         BookingModel b = null;
         try {
@@ -133,7 +107,6 @@ public class BookingDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, kode);
             ResultSet rs = ps.executeQuery();
-            
             if(rs.next()) {
                 b = mapResultSetToModel(rs);
             }
@@ -141,8 +114,6 @@ public class BookingDAO {
         } catch (Exception e) { e.printStackTrace(); }
         return b;
     }
-
-    // 7. UPDATE STATUS (Khusus Admin)
     public boolean updateStatus(int id, String status) {
         boolean berhasil = false;
         try {
@@ -151,14 +122,11 @@ public class BookingDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, status);
             ps.setInt(2, id);
-            
             if (ps.executeUpdate() > 0) berhasil = true;
             conn.close();
         } catch (Exception e) { e.printStackTrace(); }
         return berhasil;
     }
-
-    // Helper: Mapping ResultSet ke Model (Biar gak nulis ulang terus)
     private BookingModel mapResultSetToModel(ResultSet rs) throws SQLException {
         BookingModel b = new BookingModel();
         b.setId(rs.getInt("id"));
@@ -168,7 +136,7 @@ public class BookingDAO {
         b.setAlamat(rs.getString("alamat"));
         b.setPaketId(rs.getInt("paket_id"));
         b.setKodeBooking(rs.getString("kode_booking")); 
-        b.setStatus(rs.getString("status")); // Ambil status
+        b.setStatus(rs.getString("status")); 
         return b;
     }
 }

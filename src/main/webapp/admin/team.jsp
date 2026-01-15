@@ -3,34 +3,27 @@
 <%@page import="dao.TeamDAO"%>
 <%@page import="model.AdminModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%
-    // CEK SESSION ADMIN
     if(session.getAttribute("adminLog") == null){
         response.sendRedirect("../login.jsp");
         return; 
     }
     AdminModel admin = (AdminModel) session.getAttribute("adminLog");
-    
-    // SECURITY: CUMA ADMIN YANG BOLEH AKSES (STAFF DITENDANG)
     if(admin.getRole() != null && !"admin".equalsIgnoreCase(admin.getRole())) {
         response.sendRedirect("dashboard.jsp");
         return;
     }
-    
-    // AMBIL DATA TIM
     TeamDAO teamDAO = new TeamDAO();
     List<TeamModel> listTeam = teamDAO.getAllTeamMembers();
 %>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <title>Kelola Tim | Amba Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https:
+    <link rel="stylesheet" href="https:
     <style>
         body { background-color: #f8f9fa; }
         .sidebar {
@@ -57,9 +50,7 @@
     </style>
 </head>
 <body>
-
 <div class="d-flex">
-    <!-- SIDEBAR -->
     <div class="sidebar d-flex flex-column flex-shrink-0 p-3">
         <h4 class="text-center mb-4">
             <i class="fas fa-heart me-2"></i>
@@ -87,8 +78,6 @@
                     <i class="fas fa-box-open me-2"></i> Kelola Paket
                 </a>
             </li>
-            
-            <%-- MENU KHUSUS ADMIN --%>
             <li class="nav-item">
                 <a href="staff.jsp" class="nav-link text-white">
                     <i class="fas fa-users-cog me-2"></i> Kelola Staff
@@ -99,7 +88,6 @@
                     <i class="fas fa-id-badge me-2"></i> Kelola Tim (About)
                 </a>
             </li>
-            
             <li class="nav-item mt-5">
                 <a href="../LogoutServlet" class="nav-link bg-danger text-white rounded">
                     <i class="fas fa-sign-out-alt me-2"></i> Logout
@@ -107,8 +95,6 @@
             </li>
         </ul>
     </div>
-
-    <!-- CONTENT -->
     <div class="content">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
@@ -119,7 +105,6 @@
                 <i class="fas fa-plus me-2"></i> Tambah Anggota
             </button>
         </div>
-
         <% 
             String msg = request.getParameter("msg");
             if("updated".equals(msg)) { %> <div class="alert alert-success">Data tim berhasil diperbarui!</div> <% }
@@ -127,7 +112,6 @@
             else if("deleted".equals(msg)) { %> <div class="alert alert-success">Anggota berhasil dihapus!</div> <% }
             else if("failed".equals(msg)) { %> <div class="alert alert-danger">Gagal memproses data!</div> <% }
         %>
-
         <div class="card border-0 shadow-sm rounded-4 p-4">
             <div class="table-responsive">
                 <table class="table table-hover align-middle">
@@ -147,7 +131,7 @@
                         <tr>
                             <td>
                                 <img src="../<%= t.getFoto() %>" class="team-preview" 
-                                     onerror="this.src='https://ui-avatars.com/api/?name=<%= t.getNama() %>&background=random'">
+                                     onerror="this.src='https:
                             </td>
                             <td class="fw-bold"><%= t.getNama() %></td>
                             <td><span class="badge bg-info text-dark"><%= t.getJabatan() %></span></td>
@@ -164,8 +148,6 @@
                                 </a>
                             </td>
                         </tr>
-
-                        <!-- MODAL EDIT -->
                         <div class="modal fade" id="editTeamModal<%= t.getId() %>" tabindex="-1">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -176,22 +158,18 @@
                                     <form action="../TeamServlet" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="action" value="update">
                                         <input type="hidden" name="id" value="<%= t.getId() %>">
-                                        
                                         <div class="modal-body text-center">
                                             <img src="../<%= t.getFoto() %>" class="img-thumbnail rounded-circle mb-3" 
                                                  style="width: 120px; height: 120px; object-fit: cover;"
-                                                 onerror="this.src='https://ui-avatars.com/api/?name=<%= t.getNama() %>'">
-                                            
+                                                 onerror="this.src='https:
                                             <div class="form-floating mb-3 text-start">
                                                 <input type="text" name="nama" class="form-control" id="nama<%= t.getId() %>" value="<%= t.getNama() %>" required>
                                                 <label for="nama<%= t.getId() %>">Nama Lengkap</label>
                                             </div>
-                                            
                                             <div class="form-floating mb-3 text-start">
                                                 <input type="text" name="jabatan" class="form-control" id="jabatan<%= t.getId() %>" value="<%= t.getJabatan() %>" required>
                                                 <label for="jabatan<%= t.getId() %>">Jabatan (Misal: Ketua, Designer)</label>
                                             </div>
-                                            
                                             <div class="mb-3 text-start">
                                                 <label class="form-label small text-muted">Ganti Foto (Opsional)</label>
                                                 <input type="file" name="foto" class="form-control" accept="image/*">
@@ -215,8 +193,6 @@
         </div>
     </div>
 </div>
-
-<!-- MODAL TAMBAH ANGGOTA -->
 <div class="modal fade" id="addTeamModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -226,18 +202,15 @@
             </div>
             <form action="../TeamServlet" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="add">
-                
                 <div class="modal-body">
                     <div class="form-floating mb-3">
                         <input type="text" name="nama" class="form-control" id="namaBaru" required>
                         <label for="namaBaru">Nama Lengkap</label>
                     </div>
-                    
                     <div class="form-floating mb-3">
                         <input type="text" name="jabatan" class="form-control" id="jabatanBaru" required>
                         <label for="jabatanBaru">Jabatan</label>
                     </div>
-                    
                     <div class="mb-3">
                         <label class="form-label small text-muted">Foto Profil</label>
                         <input type="file" name="foto" class="form-control" accept="image/*" required>
@@ -251,7 +224,6 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https:
 </body>
 </html>

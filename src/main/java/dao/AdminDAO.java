@@ -1,28 +1,22 @@
 package dao;
-
 import connection.DBConnection;
 import model.AdminModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import java.util.ArrayList;
 import java.util.List;
-
 public class AdminDAO {
-    
     public boolean registerAdmin(AdminModel admin) {
         boolean berhasil = false;
         try {
             Connection conn = DBConnection.getConnection();
             String sql = "INSERT INTO admin (nama, email, password, role) VALUES (?, ?, ?, ?)";
-            
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, admin.getNama());
             ps.setString(2, admin.getEmail());
             ps.setString(3, admin.getPassword()); 
             ps.setString(4, admin.getRole());
-            
             int baris = ps.executeUpdate();
             if (baris > 0) {
                 berhasil = true;
@@ -33,7 +27,6 @@ public class AdminDAO {
         }
         return berhasil;
     }
-
     public AdminModel cekLogin(String email, String password) {
         AdminModel admin = null;
         try {
@@ -43,7 +36,6 @@ public class AdminDAO {
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
-            
             if (rs.next()) {
                 admin = new AdminModel();
                 admin.setId(rs.getInt("id"));
@@ -57,7 +49,6 @@ public class AdminDAO {
         }
         return admin;
     }
-
     public List<AdminModel> getAllAdmins() {
         List<AdminModel> list = new ArrayList<>();
         try {
@@ -65,7 +56,6 @@ public class AdminDAO {
             String sql = "SELECT * FROM admin ORDER BY id ASC";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
             while (rs.next()) {
                 AdminModel a = new AdminModel();
                 a.setId(rs.getInt("id"));
@@ -78,7 +68,6 @@ public class AdminDAO {
         } catch (Exception e) { e.printStackTrace(); }
         return list;
     }
-
     public boolean deleteAdmin(int id) {
         boolean berhasil = false;
         try {
@@ -86,7 +75,6 @@ public class AdminDAO {
             String sql = "DELETE FROM admin WHERE id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
-            
             if (ps.executeUpdate() > 0) berhasil = true;
             conn.close();
         } catch (Exception e) { e.printStackTrace(); }

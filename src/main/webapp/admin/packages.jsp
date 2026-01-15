@@ -5,31 +5,25 @@
 <%@page import="dao.CategoryDAO"%>
 <%@page import="model.AdminModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%
-    // CEK SESSION ADMIN
     if(session.getAttribute("adminLog") == null){
         response.sendRedirect("../login.jsp");
         return; 
     }
     AdminModel admin = (AdminModel) session.getAttribute("adminLog");
-    
-    // Siapkan DAO
     PackageDAO packageDAO = new PackageDAO();
     CategoryDAO categoryDAO = new CategoryDAO();
-    
     List<PackageModel> listPaket = packageDAO.getAllPackages();
     List<CategoryModel> listKategori = categoryDAO.getAllCategories();
 %>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <title>Kelola Paket | Amba Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https:
+    <link rel="stylesheet" href="https:
     <style>
         body { background-color: #f8f9fa; }
         .sidebar {
@@ -50,9 +44,7 @@
     </style>
 </head>
 <body>
-
 <div class="d-flex">
-    <!-- SIDEBAR -->
     <div class="sidebar d-flex flex-column flex-shrink-0 p-3">
         <h4 class="text-center mb-4">
             <i class="fas fa-heart me-2"></i>
@@ -80,7 +72,6 @@
                     <i class="fas fa-box-open me-2"></i> Kelola Paket
                 </a>
             </li>
-            
             <% 
             String role = admin.getRole();
             if(role == null || "admin".equalsIgnoreCase(role)) { 
@@ -96,7 +87,6 @@
                 </a>
             </li>
             <% } %>
-            
             <li class="nav-item mt-5">
                 <a href="../LogoutServlet" class="nav-link bg-danger text-white rounded">
                     <i class="fas fa-sign-out-alt me-2"></i> Logout
@@ -104,8 +94,6 @@
             </li>
         </ul>
     </div>
-
-    <!-- CONTENT -->
     <div class="content">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Manajemen Paket Wedding</h2>
@@ -113,7 +101,6 @@
                 <i class="fas fa-plus me-2"></i> Tambah Paket
             </button>
         </div>
-
         <% 
             String msg = request.getParameter("msg");
             if("added".equals(msg)) { %> <div class="alert alert-success">Paket berhasil ditambahkan!</div> <% }
@@ -121,7 +108,6 @@
             else if("deleted".equals(msg)) { %> <div class="alert alert-success">Paket berhasil dihapus!</div> <% }
             else if("failed".equals(msg)) { %> <div class="alert alert-danger">Gagal memproses data!</div> <% }
         %>
-
         <div class="card card-stat p-4">
             <div class="table-responsive">
                 <table class="table table-hover table-bordered align-middle">
@@ -157,7 +143,6 @@
                                         data-bs-target="#editPackageModal<%= p.getId() %>">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                
                                 <a href="../PackageServlet?action=delete&id=<%= p.getId() %>" 
                                    class="btn btn-sm btn-danger" 
                                    onclick="return confirm('Hapus paket ini?')">
@@ -165,8 +150,6 @@
                                 </a>
                             </td>
                         </tr>
-
-                        <!-- MODAL EDIT (Per Item) -->
                         <div class="modal fade" id="editPackageModal<%= p.getId() %>" tabindex="-1">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -229,8 +212,6 @@
         </div>
     </div>
 </div>
-
-<!-- MODAL TAMBAH PAKET -->
 <div class="modal fade" id="addPackageModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -275,7 +256,6 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https:
 </body>
 </html>

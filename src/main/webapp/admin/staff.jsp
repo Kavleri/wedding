@@ -2,29 +2,26 @@
 <%@page import="dao.AdminDAO"%>
 <%@page import="model.AdminModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%
     if(session.getAttribute("adminLog") == null){
         response.sendRedirect("../login.jsp");
         return; 
     }
     AdminModel currentAdmin = (AdminModel) session.getAttribute("adminLog");
-    
     String userRole = currentAdmin.getRole();
     if(userRole != null && !"admin".equals(userRole)) {
         response.sendRedirect("dashboard.jsp");
         return;
     }
 %>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <title>Kelola Staff | Amba Organizer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https:
+    <link rel="stylesheet" href="https:
     <style>
         body { background-color: #f8f9fa; }
         .sidebar {
@@ -45,9 +42,7 @@
     </style>
 </head>
 <body>
-
 <div class="d-flex">
-    <!-- SIDEBAR -->
     <div class="sidebar d-flex flex-column flex-shrink-0 p-3">
         <h4 class="text-center mb-4">
             <i class="fas fa-heart me-2"></i>
@@ -87,23 +82,19 @@
             </li>
         </ul>
     </div>
-
     <div class="content w-100">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Manajemen Staff Internal</h2>
-            
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStaffModal">
                 <i class="fas fa-plus me-2"></i> Tambah Pegawai
             </button>
         </div>
-
         <% 
             String msg = request.getParameter("msg");
             if("added".equals(msg)) { %> <div class="alert alert-success">Staff berhasil ditambahkan!</div> <% }
             else if("deleted".equals(msg)) { %> <div class="alert alert-success">Staff berhasil dihapus!</div> <% }
             else if("failed".equals(msg)) { %> <div class="alert alert-danger">Gagal memproses data!</div> <% }
         %>
-
         <div class="card card-stat p-4">
             <h5 class="mb-4">Daftar Akun Pegawai</h5>
             <div class="table-responsive">
@@ -122,7 +113,6 @@
                             AdminDAO dao = new AdminDAO();
                             List<AdminModel> listStaff = dao.getAllAdmins();
                             int no = 1;
-                            
                             if (listStaff != null && !listStaff.isEmpty()) {
                                 for(AdminModel a : listStaff) {
                                     boolean isMe = (a.getId() == currentAdmin.getId());
@@ -165,7 +155,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="addStaffModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -204,7 +193,6 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https:
 </body>
 </html>

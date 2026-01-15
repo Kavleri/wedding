@@ -5,14 +5,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wedding Amba Organizer</title>
-
-        <!-- FIX FONT IMPORT (Load Bold 700) -->
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https:
+        <link href="https:
+        <link href="https:
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
         <style>
-             /* HERO */
             .hero{
                 height: 100vh;
                 background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
@@ -22,19 +19,16 @@
                 align-items: center;
                 justify-content: center;
                 position: relative;
-                margin-top: -80px; /* Tarik ke atas di balik navbar */
+                margin-top: -80px; 
                 padding-top: 80px;
                 margin-bottom: 0;
             }
-            
-            /* Navbar KEMBALI KE PINK */
             .navbar-wedding {
                 background-color: var(--pink-main);
                 padding-top: 15px;
                 padding-bottom: 15px;
                 transition: 0.3s;
             }
-             /* CTA */
             .cta-wedding{
                 min-height:55vh;
                 background:linear-gradient(
@@ -44,10 +38,7 @@
             }
         </style>
     </head>
-
     <body>
-
-        <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-wedding fixed-top">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="#" style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.25rem;">AMBxORG</a>
@@ -66,31 +57,22 @@
                 </div>
             </div>
         </nav>
-
         <section id="hero" class="hero d-flex align-items-center text-center">
     <div class="container col-lg-8">
-        
         <div class="mb-3">
             <span class="badge-wedding text-uppercase" style="letter-spacing: 2px; font-size: 0.9rem;">
                 Wedding Amba Organizer
             </span>
         </div>
-
         <h1 class="display-3 fw-bold text-white mb-3">
             Your Dream Wedding <br> Starts Here
         </h1>
-
         <p class="lead text-white-50 fs-5 mb-0">
             Elegant and affordable wedding rental services. <br> 
             Wujudkan momen spesialmu bersama kami.
         </p>
-
     </div>
-   
 </section>
-
-
-        <!-- ABOUT -->
         <section id="about" class="py-5">
             <div class="container">
                 <div class="row align-items-center">
@@ -109,24 +91,18 @@
                 </div>
             </div>
         </section>
-
       <section id="packages" class="py-5 bg-light"> <div class="container text-center">
-        
         <div class="mb-5">
- 
             <h2 class="fw-bold" style="color: var(--pink-dark);">Wedding Packages</h2>
         </div>
-
         <div class="row align-items-center"> <div class="col-md-4 mb-4">
                 <div class="card p-4 border-0 shadow-sm">
                     <h4 class="fw-bold text-muted">Silver</h4>
                     <p class="text-muted small">Decoration + Catering</p>
                     <h3 class="my-3 fw-bold" style="color: var(--pink-main);">Rp 15.000.000</h3>
-                    
                     <a href="packages.jsp" class="btn btn-outline-wedding mt-2">View Detail</a>
                 </div>
             </div>
-
             <div class="col-md-4 mb-4">
                 <div class="card p-5 border-0 card-highlight bg-white">
                     <div class="mb-2">
@@ -135,26 +111,20 @@
                     <h3 class="fw-bold" style="color: var(--pink-dark);">Gold</h3>
                     <p class="text-muted">Decoration + Catering + Dress</p>
                     <h2 class="my-3 fw-bold" style="color: var(--pink-main);">Rp 25.000.000</h2>
-                    
                     <a href="packages.jsp" class="btn btn-wedding btn-lg mt-2 w-100">View Detail</a>
                 </div>
             </div>
-
             <div class="col-md-4 mb-4">
                 <div class="card p-4 border-0 shadow-sm">
                     <h4 class="fw-bold text-muted">Platinum</h4>
                     <p class="text-muted small">All-in Wedding Service</p>
                     <h3 class="my-3 fw-bold" style="color: var(--pink-main);">Rp 40.000.000</h3>
-                    
                     <a href="packages.jsp" class="btn btn-outline-wedding mt-2">View Detail</a>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
-
-        <!-- WHY CHOOSE US -->
         <section class="py-5">
             <div class="container">
                 <h2 class="text-center mb-5 fw-bold" style="color: var(--pink-dark);">Why Choose Us</h2>
@@ -177,8 +147,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- GALLERY -->
         <section id="gallery" class="py-5 wedding-bg">
             <div class="container text-center">
                 <h2 class="mb-5 fw-bold" style="color: var(--pink-dark);">Gallery</h2>
@@ -189,8 +157,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- CTA -->
         <section class="cta-wedding d-flex align-items-center text-white">
             <div class="container text-center">
                 <span class="badge-wedding mb-3 d-inline-block">Wedding Consultation</span>
@@ -199,12 +165,9 @@
                 <a href="contact.jsp" class="btn btn-outline-light btn-lg px-5">Book Consultation</a>
             </div>
         </section>
-
-        <!-- FOOTER -->
         <footer class="footer-wedding text-center py-4">
             © 2026 Wedding Amba Organizer. All Rights Reserved.
         </footer>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https:
     </body>
 </html>

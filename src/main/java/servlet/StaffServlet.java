@@ -1,5 +1,4 @@
 package servlet;
-
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,30 +7,23 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import dao.AdminDAO;
 import model.AdminModel;
-
 @WebServlet(name = "StaffServlet", urlPatterns = {"/StaffServlet"})
 public class StaffServlet extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         String action = request.getParameter("action");
         AdminDAO dao = new AdminDAO();
-
         if ("add".equals(action)) {
-            // TAMBAH STAFF BARU
             String nama = request.getParameter("nama");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            String role = request.getParameter("role"); // Ambil Role dari Form
-            
+            String role = request.getParameter("role"); 
             AdminModel admin = new AdminModel();
             admin.setNama(nama);
             admin.setEmail(email);
             admin.setPassword(password);
-            admin.setRole(role); // Set Role
-            
+            admin.setRole(role); 
             boolean sukses = dao.registerAdmin(admin);
             if (sukses) {
                 response.sendRedirect("admin/staff.jsp?msg=added");
@@ -40,11 +32,9 @@ public class StaffServlet extends HttpServlet {
             }
         } 
         else if ("delete".equals(action)) {
-            // HAPUS STAFF
             try {
                 int id = Integer.parseInt(request.getParameter("id"));
                 boolean sukses = dao.deleteAdmin(id);
-                
                 if (sukses) {
                     response.sendRedirect("admin/staff.jsp?msg=deleted");
                 } else {
@@ -55,11 +45,9 @@ public class StaffServlet extends HttpServlet {
             }
         }
     }
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Biar bisa delete via GET juga (dari link)
         doPost(request, response);
     }
 }
