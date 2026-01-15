@@ -1,7 +1,8 @@
 <%@page import="java.util.List"%>
 <%@page import="dao.BookingDAO"%>
 <%@page import="model.BookingModel"%>
-<%@page import="model.AdminModel"%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.AdminModel"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     if(session.getAttribute("adminLog") == null){
         response.sendRedirect("../login.jsp"); 

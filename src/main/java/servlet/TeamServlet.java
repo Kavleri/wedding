@@ -31,11 +31,18 @@ public class TeamServlet extends HttpServlet {
             Part filePart = request.getPart("foto");
             if (filePart != null && filePart.getSize() > 0) {
                 String fileName = "team_" + id + "_" + System.currentTimeMillis() + ".jpg"; 
-                String uploadDir = getServletContext().getRealPath("") + File.separator + "assets" + File.separator + "img" + File.separator + "team";
-                File uploadDirFile = new File(uploadDir);
-                if (!uploadDirFile.exists()) uploadDirFile.mkdirs();
-                String fullPath = uploadDir + File.separator + fileName;
-                filePart.write(fullPath);
+                String srcPath = "C:\\Users\\DELL\\Downloads\\wedding\\src\\main\\webapp\\assets\\img\\team";
+                File srcDir = new File(srcPath);
+                if (!srcDir.exists()) srcDir.mkdirs();
+                filePart.write(srcPath + File.separator + fileName);
+                String buildPath = getServletContext().getRealPath("") + File.separator + "assets" + File.separator + "img" + File.separator + "team";
+                File buildDir = new File(buildPath);
+                if (!buildDir.exists()) buildDir.mkdirs();
+                java.nio.file.Files.copy(
+                    Paths.get(srcPath + File.separator + fileName), 
+                    Paths.get(buildPath + File.separator + fileName),
+                    java.nio.file.StandardCopyOption.REPLACE_EXISTING
+                );
                 fotoPath = "assets/img/team/" + fileName;
             }
             TeamModel t = new TeamModel();
@@ -54,11 +61,18 @@ public class TeamServlet extends HttpServlet {
             Part filePart = request.getPart("foto");
             if (filePart != null && filePart.getSize() > 0) {
                 String fileName = "team_" + System.currentTimeMillis() + ".jpg";
-                String uploadDir = getServletContext().getRealPath("") + File.separator + "assets" + File.separator + "img" + File.separator + "team";
-                File uploadDirFile = new File(uploadDir);
-                if (!uploadDirFile.exists()) uploadDirFile.mkdirs();
-                String fullPath = uploadDir + File.separator + fileName;
-                filePart.write(fullPath);
+                String srcPath = "C:\\Users\\DELL\\Downloads\\wedding\\src\\main\\webapp\\assets\\img\\team";
+                File srcDir = new File(srcPath);
+                if (!srcDir.exists()) srcDir.mkdirs();
+                filePart.write(srcPath + File.separator + fileName);
+                String buildPath = getServletContext().getRealPath("") + File.separator + "assets" + File.separator + "img" + File.separator + "team";
+                File buildDir = new File(buildPath);
+                if (!buildDir.exists()) buildDir.mkdirs();
+                java.nio.file.Files.copy(
+                    Paths.get(srcPath + File.separator + fileName), 
+                    Paths.get(buildPath + File.separator + fileName),
+                    java.nio.file.StandardCopyOption.REPLACE_EXISTING
+                );
                 fotoPath = "assets/img/team/" + fileName;
             }
             TeamModel t = new TeamModel();

@@ -2,7 +2,7 @@
 # WEDDING AMBA ORGANIZER
 
 **Mata Kuliah:** Pemrograman Berorientasi Objek (PBO) / Pemrograman Web  
-**Dosen Pengampu:** Nasrul, S.Pd.I., S.Kom., M.Kom.
+**Dosen Pengampu:** (Silakan Isi)
 
 ---
 
@@ -167,5 +167,5 @@ private static final String PASSWORD = "password_anda";
 5.  Aplikasi akan terbuka otomatis di browser.
 
 ### Akses Login Admin:
--   **Email:** admin@test.com
+-   **Email:** admin@amba.com
 -   **Password:** admin123
