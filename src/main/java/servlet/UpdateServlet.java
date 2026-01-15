@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlet;
 
 import dao.BookingDAO;
@@ -21,15 +17,13 @@ public class UpdateServlet extends HttpServlet {
             throws ServletException, IOException {
         
         try {
-            // 1. Tangkap semua data dari Form Edit
-            int id = Integer.parseInt(request.getParameter("id")); // ID disembunyikan di form tadi
+            int id = Integer.parseInt(request.getParameter("id"));
             String nama = request.getParameter("nama");
             String hp = request.getParameter("hp");
             String tanggal = request.getParameter("tanggal");
             String alamat = request.getParameter("alamat");
             int paket = Integer.parseInt(request.getParameter("paket"));
 
-            // 2. Bungkus jadi satu paket Model
             BookingModel b = new BookingModel();
             b.setId(id);
             b.setNamaPemesan(nama);
@@ -38,7 +32,6 @@ public class UpdateServlet extends HttpServlet {
             b.setAlamat(alamat);
             b.setPaketId(paket);
 
-            // 3. Panggil DAO buat Update ke Database
             BookingDAO dao = new BookingDAO();
             dao.updateBooking(b);
             
@@ -46,7 +39,6 @@ public class UpdateServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        // 4. Sukses? Balik ke Dashboard
         response.sendRedirect("admin/dashboard.jsp");
     }
 }

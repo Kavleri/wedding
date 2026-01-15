@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import connection.DBConnection;
@@ -25,7 +21,7 @@ public class AdminDAO {
             ps.setString(1, admin.getNama());
             ps.setString(2, admin.getEmail());
             ps.setString(3, admin.getPassword()); 
-            ps.setString(4, admin.getRole()); // SIMPAN ROLE!
+            ps.setString(4, admin.getRole());
             
             int baris = ps.executeUpdate();
             if (baris > 0) {
@@ -38,7 +34,6 @@ public class AdminDAO {
         return berhasil;
     }
 
-    // 2. Method buat CEK LOGIN
     public AdminModel cekLogin(String email, String password) {
         AdminModel admin = null;
         try {
@@ -54,7 +49,7 @@ public class AdminDAO {
                 admin.setId(rs.getInt("id"));
                 admin.setNama(rs.getString("nama"));
                 admin.setEmail(rs.getString("email"));
-                admin.setRole(rs.getString("role")); // PENTING: AMBIL ROLE DARI DB!
+                admin.setRole(rs.getString("role"));
             }
             conn.close();
         } catch (Exception e) {
@@ -63,7 +58,6 @@ public class AdminDAO {
         return admin;
     }
 
-    // 3. AMBIL SEMUA STAFF (Untuk Halaman Kelola Staff)
     public List<AdminModel> getAllAdmins() {
         List<AdminModel> list = new ArrayList<>();
         try {
@@ -85,7 +79,6 @@ public class AdminDAO {
         return list;
     }
 
-    // 4. HAPUS STAFF
     public boolean deleteAdmin(int id) {
         boolean berhasil = false;
         try {

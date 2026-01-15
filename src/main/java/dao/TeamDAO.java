@@ -10,7 +10,6 @@ import model.TeamModel;
 
 public class TeamDAO {
     
-    // 1. Ambil Semua Anggota Tim
     public List<TeamModel> getAllTeamMembers() {
         List<TeamModel> list = new ArrayList<>();
         try {
@@ -27,22 +26,17 @@ public class TeamDAO {
                 t.setFoto(rs.getString("foto"));
                 list.add(t);
             }
-            // DEBUGGING: Cek berapa data yang dapet
-            System.out.println("DEBUG TEAM DAO: Ditemukan " + list.size() + " anggota tim.");
-            
             conn.close();
         } catch(Exception e) { e.printStackTrace(); }
         return list;
     }
     
-    // 2. Update Anggota Tim
     public boolean updateTeamMember(TeamModel t) {
         boolean berhasil = false;
         try {
             Connection conn = DBConnection.getConnection();
             String sql;
             
-            // Cek apakah update foto juga?
             if (t.getFoto() != null && !t.getFoto().isEmpty()) {
                 sql = "UPDATE team_members SET nama=?, jabatan=?, foto=? WHERE id=?";
             } else {
@@ -66,7 +60,6 @@ public class TeamDAO {
         return berhasil;
     }
     
-    // 3. Tambah Anggota Baru
     public boolean insertTeamMember(TeamModel t) {
         boolean berhasil = false;
         try {
@@ -83,7 +76,6 @@ public class TeamDAO {
         return berhasil;
     }
 
-    // 4. Hapus Anggota
     public boolean deleteTeamMember(int id) {
         boolean berhasil = false;
         try {
