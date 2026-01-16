@@ -4,6 +4,7 @@
 <%@page import="dao.DashboardDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    // Cek Login
     if(session.getAttribute("adminLog") == null){
         response.sendRedirect("../login.jsp");
         return; 
