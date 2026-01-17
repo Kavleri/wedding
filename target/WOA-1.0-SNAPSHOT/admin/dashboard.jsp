@@ -23,8 +23,8 @@
     <meta charset="UTF-8">
     <title>Dashboard Statistik | Amba Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:
-    <link rel="stylesheet" href="https:
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #f8f9fa; }
         .sidebar {
@@ -123,7 +123,7 @@
                     <div class="fw-bold"><%= admin.getNama() %></div>
                     <small class="text-muted"><%= (admin.getRole() != null) ? admin.getRole() : "Super Admin" %></small>
                 </div>
-                <div class="bg-secondary rounded-circle" style="width: 40px; height: 40px; background-image: url('https:
+                <div class="bg-secondary rounded-circle" style="width: 40px; height: 40px; background-image: url('https://ui-avatars.com/api/?name=<%= admin.getNama().replace(" ", "+") %>'); background-size: cover; background-position: center;"></div>
             </div>
         </div>
         <div class="row g-4 mb-5">
@@ -201,7 +201,7 @@
                         <tr class="<%= isMe ? "table-active" : "" %>">
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="https:
+                                    <img src="https://ui-avatars.com/api/?name=<%= a.getNama().replace(" ", "+") %>" class="staff-avatar me-3">
                                     <div>
                                         <div class="fw-bold"><%= a.getNama() %> <%= isMe ? "(Anda)" : "" %></div>
                                         <small class="text-muted">ID: #<%= a.getId() %></small>
@@ -232,6 +232,6 @@
         </div>
     </div>
 </div>
-<script src="https:
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -32,12 +32,24 @@ public class PackageServlet extends HttpServlet {
             Part filePart = request.getPart("file_gambar");
             if (filePart != null && filePart.getSize() > 0) {
                 String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-                String uploadDir = getServletContext().getRealPath("") + File.separator + "assets" + File.separator + "uploads";
-                File uploadDirFile = new File(uploadDir);
-                if (!uploadDirFile.exists()) uploadDirFile.mkdirs();
-                String fullPath = uploadDir + File.separator + fileName;
-                filePart.write(fullPath);
-                gambarPath = "assets/uploads/" + fileName;
+                // 1. Simpan ke folder Source Code (Agar PERMANEN)
+                String srcPath = "C:\\Users\\DELL\\Downloads\\wedding\\src\\main\\webapp\\assets\\img\\uploads";
+                File srcDir = new File(srcPath);
+                if (!srcDir.exists()) srcDir.mkdirs();
+                filePart.write(srcPath + File.separator + fileName);
+
+                // 2. Simpan juga ke folder Build (Agar langsung tampil)
+                String buildPath = getServletContext().getRealPath("") + File.separator + "assets" + File.separator + "img" + File.separator + "uploads";
+                File buildDir = new File(buildPath);
+                if (!buildDir.exists()) buildDir.mkdirs();
+
+                java.nio.file.Files.copy(
+                    Paths.get(srcPath + File.separator + fileName), 
+                    Paths.get(buildPath + File.separator + fileName),
+                    java.nio.file.StandardCopyOption.REPLACE_EXISTING
+                );
+
+                gambarPath = "assets/img/uploads/" + fileName;
             }
             PackageModel p = new PackageModel();
             p.setNamaPaket(nama);
@@ -59,12 +71,25 @@ public class PackageServlet extends HttpServlet {
             Part filePart = request.getPart("file_gambar");
             if (filePart != null && filePart.getSize() > 0) {
                 String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-                String uploadDir = getServletContext().getRealPath("") + File.separator + "assets" + File.separator + "uploads";
-                File uploadDirFile = new File(uploadDir);
-                if (!uploadDirFile.exists()) uploadDirFile.mkdirs();
-                String fullPath = uploadDir + File.separator + fileName;
-                filePart.write(fullPath);
-                gambarPath = "assets/uploads/" + fileName;
+                
+                // 1. Simpan ke folder Source Code (Agar PERMANEN)
+                String srcPath = "C:\\Users\\DELL\\Downloads\\wedding\\src\\main\\webapp\\assets\\img\\uploads";
+                File srcDir = new File(srcPath);
+                if (!srcDir.exists()) srcDir.mkdirs();
+                filePart.write(srcPath + File.separator + fileName);
+
+                // 2. Simpan juga ke folder Build (Agar langsung tampil)
+                String buildPath = getServletContext().getRealPath("") + File.separator + "assets" + File.separator + "img" + File.separator + "uploads";
+                File buildDir = new File(buildPath);
+                if (!buildDir.exists()) buildDir.mkdirs();
+
+                java.nio.file.Files.copy(
+                    Paths.get(srcPath + File.separator + fileName), 
+                    Paths.get(buildPath + File.separator + fileName),
+                    java.nio.file.StandardCopyOption.REPLACE_EXISTING
+                );
+
+                gambarPath = "assets/img/uploads/" + fileName;
             }
             PackageModel p = new PackageModel();
             p.setId(id);

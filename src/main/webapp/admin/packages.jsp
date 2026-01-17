@@ -22,8 +22,8 @@
     <meta charset="UTF-8">
     <title>Kelola Paket | Amba Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:
-    <link rel="stylesheet" href="https:
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #f8f9fa; }
         .sidebar {
@@ -256,6 +256,6 @@
         </div>
     </div>
 </div>
-<script src="https:
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

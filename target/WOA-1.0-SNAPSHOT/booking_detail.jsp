@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <title>Detail Pesanan #<%= ((BookingModel)request.getAttribute("booking")).getKodeBooking() %> | Amba Organizer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:
-    <link rel="stylesheet" href="https:
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .invoice-header { background: #f8f9fa; border-bottom: 2px solid #eee; }
@@ -160,7 +160,7 @@
                                     <hr class="my-2">
                                     <p class="mb-2 small text-muted">Silakan transfer DP sebesar <strong>30%</strong> ke rekening berikut untuk mengunci tanggal:</p>
                                     <div class="d-flex align-items-center bg-light p-2 rounded">
-                                        <img src="https:
+                                        <img src="https://via.placeholder.com/50x30?text=BCA" class="me-3" alt="BCA" style="height: 30px;">
                                         <div>
                                             <p class="mb-0 fw-bold">8830-1234-5678</p>
                                             <p class="mb-0 small text-muted">a.n. Amba Organizer Official</p>
@@ -180,7 +180,7 @@
                                 <button onclick="window.print()" class="btn btn-outline-secondary me-2">
                                     <i class="fas fa-print me-1"></i> Cetak Invoice
                                 </button>
-                                <a href="https:
+                                <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-success text-white">
                                     <i class="fab fa-whatsapp me-1"></i> Konfirmasi WA
                                 </a>
                             </div>
@@ -197,7 +197,7 @@
             </div>
         </div>
     </div>
-    <script src="https:
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <div class="print-footer">
         Dicetak pada: <span id="printDate"></span> | Amba Organizer System
     </div>

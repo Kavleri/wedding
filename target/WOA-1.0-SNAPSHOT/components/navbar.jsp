@@ -1,5 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
-<link href="https:
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <style>
     body { font-family: 'Poppins', sans-serif; } 
     .navbar-brand { font-family: 'Poppins', sans-serif !important; font-weight: 700 !important; font-size: 1.25rem !important; }

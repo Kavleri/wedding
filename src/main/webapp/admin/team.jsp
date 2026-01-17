@@ -22,8 +22,8 @@
     <meta charset="UTF-8">
     <title>Kelola Tim | Amba Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:
-    <link rel="stylesheet" href="https:
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #f8f9fa; }
         .sidebar {
@@ -131,7 +131,7 @@
                         <tr>
                             <td>
                                 <img src="../<%= t.getFoto() %>" class="team-preview" 
-                                     onerror="this.src='https:
+                                     onerror="this.src='https://ui-avatars.com/api/?name=<%= t.getNama().replace(" ", "+") %>'">
                             </td>
                             <td class="fw-bold"><%= t.getNama() %></td>
                             <td><span class="badge bg-info text-dark"><%= t.getJabatan() %></span></td>
@@ -161,7 +161,7 @@
                                         <div class="modal-body text-center">
                                             <img src="../<%= t.getFoto() %>" class="img-thumbnail rounded-circle mb-3" 
                                                  style="width: 120px; height: 120px; object-fit: cover;"
-                                                 onerror="this.src='https:
+                                                 onerror="this.src='https://ui-avatars.com/api/?name=<%= t.getNama().replace(" ", "+") %>'">
                                             <div class="form-floating mb-3 text-start">
                                                 <input type="text" name="nama" class="form-control" id="nama<%= t.getId() %>" value="<%= t.getNama() %>" required>
                                                 <label for="nama<%= t.getId() %>">Nama Lengkap</label>
@@ -224,6 +224,6 @@
         </div>
     </div>
 </div>
-<script src="https:
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
