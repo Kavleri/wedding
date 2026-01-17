@@ -3,11 +3,11 @@
 <html>
 <head>
     <title>Wedding Amba Organizer</title>
-    <link href="https:
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .hero {
             background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)),
-            url('https:
+            url('assets/img/heading.jpg');
             background-size: cover;
             background-position: center;
             height: 90vh;
@@ -24,6 +24,6 @@
         <a href="packages.jsp" class="btn btn-light btn-lg mt-3">View Packages</a>
     </div>
 </section>
-<script src="https:
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
